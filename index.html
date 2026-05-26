@@ -11,32 +11,22 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: oklch(0.985 0.005 85);
-      --surface: oklch(0.97 0.003 85);
-      --border: oklch(0.88 0.005 85);
+      --bg: oklch(0.985 0.002 75);
+      --surface: oklch(0.965 0.004 75);
+      --border: oklch(0.90 0.005 75);
+      --border-light: oklch(0.93 0.003 75);
 
-      --text: oklch(0.22 0.012 55);
-      --text-mid: oklch(0.45 0.008 55);
-      --text-muted: oklch(0.62 0.006 55);
+      --text: oklch(0.16 0.015 55);
+      --text-mid: oklch(0.32 0.01 55);
+      --text-muted: oklch(0.44 0.008 55);
+      --text-faint: oklch(0.54 0.006 55);
 
-      --green-900: oklch(0.28 0.08 158);
-      --green-700: oklch(0.38 0.10 158);
-      --green-600: oklch(0.44 0.12 158);
-      --green-500: oklch(0.50 0.13 158);
-      --green-400: oklch(0.58 0.11 158);
-      --green-200: oklch(0.82 0.06 158);
-      --green-100: oklch(0.92 0.035 158);
-      --green-50: oklch(0.96 0.015 158);
+      --accent: oklch(0.40 0.10 158);
+      --accent-soft: oklch(0.92 0.025 158);
+      --accent-muted: oklch(0.48 0.07 158);
 
-      --amber-700: oklch(0.52 0.13 70);
-      --amber-500: oklch(0.72 0.14 70);
-      --amber-400: oklch(0.78 0.12 70);
-      --amber-200: oklch(0.90 0.06 70);
-      --amber-100: oklch(0.95 0.035 70);
-
-      --slate-700: oklch(0.40 0.02 260);
-      --slate-200: oklch(0.88 0.01 260);
-      --slate-100: oklch(0.94 0.005 260);
+      --tag-bg: oklch(0.92 0.008 75);
+      --tag-text: oklch(0.32 0.01 55);
 
       --font-display: 'Archivo', system-ui, sans-serif;
       --font-body: 'Lexend', system-ui, sans-serif;
@@ -67,9 +57,9 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: oklch(0.985 0.005 85 / 0.85);
+      background: oklch(0.985 0.002 75 / 0.88);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-light);
       padding: 0.75rem var(--space-lg);
       display: flex;
       align-items: center;
@@ -82,7 +72,7 @@
       font-size: 0.85rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--green-700);
+      color: var(--accent);
       white-space: nowrap;
     }
 
@@ -94,7 +84,7 @@
 
     nav a {
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       font-weight: 500;
       color: var(--text-muted);
       text-decoration: none;
@@ -104,8 +94,8 @@
     }
 
     nav a:hover, nav a.active {
-      color: var(--green-700);
-      background: var(--green-50);
+      color: var(--accent);
+      background: var(--accent-soft);
     }
 
     /* --- SECTIONS --- */
@@ -115,30 +105,20 @@
       margin: 0 auto;
     }
 
-    .section-number {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--green-400);
-      margin-bottom: var(--space-xs);
-    }
-
     .section-title {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
       line-height: 1.15;
       color: var(--text);
       margin-bottom: var(--space-xs);
     }
 
     .section-subtitle {
-      font-size: 1.05rem;
-      font-weight: 300;
+      font-size: 1.15rem;
+      font-weight: 400;
       color: var(--text-mid);
-      max-width: 55ch;
+      max-width: 58ch;
       margin-bottom: var(--space-xl);
     }
 
@@ -155,16 +135,6 @@
       padding-right: var(--space-lg);
     }
 
-    .hero-kicker {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--green-500);
-      margin-bottom: var(--space-md);
-    }
-
     .hero h1 {
       font-family: var(--font-display);
       font-weight: 900;
@@ -175,7 +145,7 @@
     }
 
     .hero h1 span {
-      color: var(--green-600);
+      color: var(--accent);
     }
 
     .hero-desc {
@@ -207,44 +177,24 @@
     }
 
     .hero-sections a:hover {
-      color: var(--green-700);
-      border-color: var(--green-200);
-      background: var(--green-50);
+      color: var(--accent);
+      border-color: var(--accent-soft);
+      background: var(--accent-soft);
     }
 
     /* --- LAYERS SECTION --- */
     .layers-stack {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: var(--space-md);
     }
 
     .layer {
-      padding: var(--space-lg) var(--space-lg);
+      padding: var(--space-lg);
       border-radius: 12px;
-      position: relative;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
     }
-
-    .layer-3 {
-      background: var(--green-700);
-      color: oklch(0.97 0.01 158);
-    }
-    .layer-3 .layer-items-label { color: oklch(0.80 0.04 158); }
-    .layer-3 .layer-tag { background: oklch(0.97 0.01 158 / 0.15); color: oklch(0.95 0.01 158); }
-
-    .layer-2 {
-      background: var(--green-200);
-      color: var(--green-900);
-    }
-    .layer-2 .layer-items-label { color: var(--green-600); }
-    .layer-2 .layer-tag { background: oklch(0.98 0.005 158 / 0.7); color: var(--green-700); }
-
-    .layer-1 {
-      background: var(--green-50);
-      color: var(--green-900);
-    }
-    .layer-1 .layer-items-label { color: var(--green-500); }
-    .layer-1 .layer-tag { background: oklch(0.99 0.003 158 / 0.8); color: var(--green-600); }
 
     .layer-header {
       display: flex;
@@ -256,23 +206,24 @@
     .layer-number {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      opacity: 0.5;
+      color: var(--text-muted);
     }
 
     .layer-name {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
       line-height: 1.2;
+      color: var(--text);
     }
 
     .layer-question {
-      font-weight: 300;
-      font-size: 0.9rem;
-      opacity: 0.7;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: var(--text-mid);
       margin-bottom: var(--space-md);
       font-style: italic;
     }
@@ -286,236 +237,249 @@
     .layer-items-label {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       letter-spacing: 0.03em;
+      color: var(--text-mid);
       margin-bottom: 0.5rem;
     }
 
     .layer-tag {
       display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 400;
-      padding: 0.25rem 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.3rem 0.7rem;
       border-radius: 5px;
       margin: 0.15rem 0.15rem 0.15rem 0;
-    }
-
-    .layer-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 0;
-      color: var(--green-400);
-      font-size: 0.7rem;
-      font-family: var(--font-display);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      gap: 0.5rem;
-    }
-
-    .layer-arrow svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
+      background: var(--tag-bg);
+      color: var(--tag-text);
     }
 
     /* --- LIFECYCLE SECTION --- */
-    .lifecycle-wrapper {
-      overflow-x: auto;
-      padding-bottom: var(--space-sm);
+    .lifecycle-group {
+      margin-bottom: var(--space-lg);
     }
 
-    .lifecycle-phases {
-      display: flex;
-      gap: 0;
-      margin-bottom: var(--space-md);
-      min-width: 1000px;
+    .lifecycle-group:last-child {
+      margin-bottom: 0;
     }
 
-    .phase {
-      flex: 1;
-      padding: 0.5rem 0.75rem;
-      text-align: center;
+    .lifecycle-phase-label {
       font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.7rem;
+      font-weight: 800;
+      font-size: 0.82rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .phase-prepare { background: var(--green-100); color: var(--green-700); flex: 3; }
-    .phase-build { background: var(--amber-100); color: var(--amber-700); flex: 1; }
-    .phase-qa { background: var(--slate-100); color: var(--slate-700); flex: 4; }
-    .phase-ship { background: oklch(0.93 0.04 30); color: oklch(0.45 0.10 30); flex: 1; }
-
-    .lifecycle-track {
-      display: flex;
-      align-items: center;
-      min-width: 1000px;
-      position: relative;
-    }
-
-    .lifecycle-line {
-      position: absolute;
-      top: 20px;
-      left: 2rem;
-      right: 2rem;
-      height: 2px;
-      background: var(--border);
-      z-index: 0;
+      color: var(--text-mid);
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 0;
     }
 
     .lifecycle-step {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 1;
+      display: grid;
+      grid-template-columns: 2.5rem 1fr 1fr;
+      gap: 0 var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--border-light);
+      align-items: baseline;
     }
 
-    .step-dot {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .lifecycle-step:last-child {
+      border-bottom: none;
+    }
+
+    .step-number {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 0.75rem;
-      color: oklch(0.98 0.005 85);
-      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
     }
 
-    .step-dot-prepare { background: var(--green-500); }
-    .step-dot-build { background: var(--amber-500); }
-    .step-dot-validate { background: var(--slate-700); }
-    .step-dot-ship { background: oklch(0.50 0.12 30); }
+    .step-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
 
     .step-label {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.82rem;
-      text-align: center;
+      font-size: 1rem;
       color: var(--text);
-      margin-bottom: 0.25rem;
     }
 
     .step-desc {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-align: center;
-      max-width: 100px;
-    }
-
-    /* --- SKILLS SECTION --- */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 60px 1fr;
-      gap: var(--space-lg) 0;
-      align-items: start;
-    }
-
-    .wave-header {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 60px 1fr;
-      align-items: center;
-      margin-bottom: var(--space-sm);
-    }
-
-    .wave-label {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-    }
-
-    .wave-1-label {
-      background: var(--green-100);
-      color: var(--green-700);
-    }
-
-    .wave-2-label {
-      background: var(--amber-100);
-      color: var(--amber-700);
-    }
-
-    .wave-arrow-col {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .skills-row {
-      display: contents;
-    }
-
-    .skill-item {
-      padding: var(--space-sm) var(--space-md);
-      border-radius: 10px;
-      border: 1.5px solid var(--border);
-      background: var(--bg);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .skill-item:hover {
-      border-color: var(--green-200);
-      box-shadow: 0 2px 12px oklch(0.50 0.13 158 / 0.08);
-    }
-
-    .skill-item.wave-2 {
-      border-color: var(--amber-200);
-    }
-
-    .skill-item.wave-2:hover {
-      border-color: var(--amber-400);
-      box-shadow: 0 2px 12px oklch(0.72 0.14 70 / 0.1);
-    }
-
-    .skill-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .skill-name code {
-      font-family: 'Archivo', monospace;
-      font-weight: 700;
-      background: none;
-      padding: 0;
-    }
-
-    .skill-desc {
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       color: var(--text-mid);
       line-height: 1.5;
     }
 
-    .skill-arrow {
+    .step-ai-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .step-ai-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+      color: var(--accent);
+    }
+
+    .step-ai-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    /* --- SKILLS SECTION --- */
+    .skills-layer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .skills-layer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skills-layer-header {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-layer-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .skills-layer-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .skill-entry {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.2s;
+    }
+
+    .skill-entry:hover {
+      border-color: var(--accent-soft);
+    }
+
+    .skill-entry-header {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-entry-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .skill-badge {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .skill-badge-core {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .skill-badge-extended {
+      background: var(--surface);
       color: var(--text-muted);
     }
 
-    .skill-arrow svg {
-      width: 20px;
-      height: 20px;
+    .skill-entry-desc {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.45;
     }
 
-    /* --- TOOLS SECTION --- */
+    .skill-creation-banner {
+      grid-column: 1 / -1;
+      padding: var(--space-md) var(--space-lg);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      margin-top: var(--space-sm);
+    }
+
+    .skill-creation-banner-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .skill-creation-banner-desc {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      max-width: 65ch;
+      line-height: 1.5;
+    }
+
+    .skill-creation-steps {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .skill-creation-step {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 5px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
+    /* --- ECOSYSTEM SVG --- */
+    .ecosystem-diagram {
+      width: 100%;
+      max-width: 820px;
+      height: auto;
+      margin-bottom: var(--space-xl);
+      font-family: 'Archivo', system-ui, sans-serif;
+    }
+
+    /* --- TOOLS GRID --- */
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
+      gap: 1.5px;
       background: var(--border);
       border-radius: 12px;
       overflow: hidden;
@@ -531,12 +495,12 @@
     .tool-col-header {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-bottom: 0.25rem;
     }
 
     .tool-col-type {
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       font-weight: 500;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -546,15 +510,10 @@
       border-bottom: 2px solid var(--border);
     }
 
-    .tool-col:nth-child(1) .tool-col-type { border-color: var(--green-400); }
-    .tool-col:nth-child(2) .tool-col-type { border-color: var(--amber-400); }
-    .tool-col:nth-child(3) .tool-col-type { border-color: var(--slate-200); }
-    .tool-col:nth-child(4) .tool-col-type { border-color: oklch(0.60 0.10 290); }
-
     .tool-best-for {
       font-family: var(--font-display);
       font-weight: 600;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -569,7 +528,7 @@
     }
 
     .tool-examples li {
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       color: var(--text-mid);
       padding-left: 1rem;
       position: relative;
@@ -580,117 +539,109 @@
       position: absolute;
       left: 0;
       top: 0.55rem;
-      width: 5px;
-      height: 5px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--border);
     }
 
+    .tool-item-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      display: block;
+    }
+
+    .tool-item-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
     /* --- TEACHING SECTION --- */
-    .teaching-layout {
+    .teaching-intro {
+      margin-bottom: var(--space-lg);
+    }
+
+    .teaching-topics-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
     }
 
-    .teaching-deep {
-      padding: var(--space-lg);
-      background: var(--green-700);
-      border-radius: 12px;
-      color: oklch(0.97 0.01 158);
-      grid-column: 1 / -1;
-    }
-
-    .teaching-deep-kicker {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.6;
-      margin-bottom: var(--space-xs);
-    }
-
-    .teaching-deep-title {
+    .teaching-topics-col h3 {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      line-height: 1.2;
-      margin-bottom: var(--space-xs);
-    }
-
-    .teaching-deep-desc {
-      font-weight: 300;
-      font-size: 0.9rem;
-      opacity: 0.7;
-      max-width: 60ch;
-    }
-
-    .teaching-block {
-      padding: var(--space-lg);
-      background: var(--surface);
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-    }
-
-    .teaching-block-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1rem;
+      font-size: 1.15rem;
       margin-bottom: var(--space-md);
     }
 
-    .lightning-list {
+    .topic-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
 
-    .lightning-list li {
-      font-size: 0.88rem;
+    .topic-list li {
+      font-size: 0.95rem;
       color: var(--text-mid);
       display: flex;
       align-items: baseline;
       gap: 0.6rem;
     }
 
-    .lightning-number {
+    .topic-number {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 0.75rem;
-      color: var(--green-400);
+      font-size: 0.8rem;
+      color: var(--text-muted);
       min-width: 1.5rem;
     }
 
-    .venue-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .venue-tag {
+    .teaching-formats-title {
       font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.78rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: 6px;
-      background: var(--green-50);
-      color: var(--green-700);
+      font-weight: 800;
+      font-size: 1.15rem;
+      margin-bottom: var(--space-md);
     }
 
-    .venue-tag.secondary {
-      background: var(--amber-100);
-      color: var(--amber-700);
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .format-card {
+      padding: var(--space-md);
+      background: var(--surface);
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+    }
+
+    .format-card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .format-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.5;
     }
 
     /* --- FOOTER --- */
     footer {
       text-align: center;
       padding: var(--space-xl) var(--space-lg);
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border-light);
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -711,7 +662,6 @@
     .reveal-delay-1 { transition-delay: 0.08s; }
     .reveal-delay-2 { transition-delay: 0.16s; }
     .reveal-delay-3 { transition-delay: 0.24s; }
-    .reveal-delay-4 { transition-delay: 0.32s; }
 
     /* --- RESPONSIVE --- */
     @media (max-width: 900px) {
@@ -719,309 +669,24 @@
       .hero { padding-left: var(--space-md); padding-right: var(--space-md); }
       nav { padding: 0.75rem var(--space-md); }
 
-      .tools-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-sm);
-      }
-      .wave-header { grid-template-columns: 1fr; }
-      .wave-arrow-col, .skill-arrow { display: none; }
-      .wave-2-label { margin-top: var(--space-md); }
-
-      .teaching-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .lifecycle-phases, .lifecycle-track {
-        min-width: 800px;
-      }
-    }
-
-    /* --- ECOSYSTEM STACK DIAGRAM --- */
-    .eco-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-bottom: var(--space-xl);
-      max-width: 700px;
-    }
-
-    .eco-band {
-      padding: var(--space-sm) var(--space-md);
-      border-radius: 10px;
-      display: flex;
-      align-items: baseline;
-      gap: var(--space-md);
-    }
-
-    .eco-band-config {
-      background: var(--green-100);
-      color: var(--green-900);
-    }
-
-    .eco-band-interfaces {
-      background: var(--amber-100);
-      color: var(--amber-700);
-    }
-
-    .eco-band-models {
-      background: var(--slate-100);
-      color: var(--slate-700);
-    }
-
-    .eco-band-infra {
-      background: oklch(0.93 0.03 290);
-      color: oklch(0.35 0.08 290);
-    }
-
-    .eco-band-label {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 0.85rem;
-      min-width: 130px;
-      white-space: nowrap;
-    }
-
-    .eco-band-items {
-      font-size: 0.78rem;
-      font-weight: 400;
-      opacity: 0.8;
-    }
-
-    .eco-connector {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0 0.25rem var(--space-md);
-      font-family: var(--font-display);
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .eco-connector svg {
-      width: 12px;
-      height: 12px;
-      fill: currentColor;
-    }
-
-    /* --- LIFECYCLE AI ROLE --- */
-    .step-ai {
-      font-size: 0.65rem;
-      font-weight: 500;
-      color: var(--green-500);
-      text-align: center;
-      max-width: 120px;
-      margin-top: 0.4rem;
-      line-height: 1.35;
-    }
-
-    /* --- SKILLS BY LAYER --- */
-    .skills-layer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-    }
-
-    .skills-layer-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .skills-layer-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .skills-layer-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 0.88rem;
-    }
-
-    .skill-entry {
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      border: 1.5px solid var(--border);
-      background: var(--bg);
-      transition: border-color 0.2s;
-    }
-
-    .skill-entry:hover {
-      border-color: var(--green-200);
-    }
-
-    .skill-entry-header {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .skill-entry-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.85rem;
-    }
-
-    .skill-badge {
-      font-family: var(--font-display);
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-    }
-
-    .skill-badge-core {
-      background: var(--green-100);
-      color: var(--green-700);
-    }
-
-    .skill-badge-extended {
-      background: var(--amber-100);
-      color: var(--amber-700);
-    }
-
-    .skill-badge-installed {
-      background: oklch(0.92 0.04 160);
-      color: oklch(0.32 0.08 160);
-    }
-
-    .skill-badge-ecosystem {
-      background: var(--slate-100);
-      color: var(--slate-700);
-    }
-
-    .skill-badge-build {
-      background: oklch(0.93 0.04 30);
-      color: oklch(0.42 0.10 30);
-    }
-
-    .skill-source {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      margin-top: 0.15rem;
-    }
-
-    .skill-entry-desc {
-      font-size: 0.75rem;
-      color: var(--text-mid);
-      line-height: 1.4;
-    }
-
-    .skill-creation-banner {
-      grid-column: 1 / -1;
-      padding: var(--space-md) var(--space-lg);
-      background: var(--green-700);
-      color: oklch(0.97 0.01 158);
-      border-radius: 10px;
-      margin-top: var(--space-sm);
-    }
-
-    .skill-creation-banner-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .skill-creation-banner-desc {
-      font-weight: 300;
-      font-size: 0.85rem;
-      opacity: 0.8;
-      max-width: 65ch;
-      line-height: 1.5;
-    }
-
-    .skill-creation-steps {
-      display: flex;
-      gap: var(--space-md);
-      margin-top: var(--space-sm);
-      flex-wrap: wrap;
-    }
-
-    .skill-creation-step {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.75rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 5px;
-      background: oklch(0.97 0.01 158 / 0.15);
-    }
-
-    @media (max-width: 900px) {
+      .tools-grid { grid-template-columns: 1fr 1fr; }
       .skills-layer-grid { grid-template-columns: 1fr; }
-      .eco-stack { max-width: 100%; }
-    }
+      .teaching-topics-grid { grid-template-columns: 1fr; }
+      .formats-grid { grid-template-columns: 1fr 1fr; }
 
-    .tool-item-name {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 0.82rem;
-      color: var(--text);
-      display: block;
-    }
-
-    .tool-item-desc {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      display: block;
-      margin-top: 0.1rem;
-    }
-
-    .teaching-layers-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-    }
-
-    .teaching-layer-col {
-      padding: var(--space-md);
-      background: var(--surface);
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-    }
-
-    .teaching-layer-tag {
-      display: inline-block;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      margin-bottom: 0.75rem;
-    }
-
-    .teaching-layer-tag-1 { background: var(--green-50); color: var(--green-600); }
-    .teaching-layer-tag-2 { background: var(--green-100); color: var(--green-700); }
-    .teaching-layer-tag-3 { background: var(--green-700); color: oklch(0.95 0.01 158); }
-
-    .teaching-venues-row {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-md);
-    }
-
-    @media (max-width: 900px) {
-      .teaching-layers-grid { grid-template-columns: 1fr; }
-      .teaching-venues-row { grid-template-columns: 1fr; }
+      .lifecycle-step {
+        grid-template-columns: 2rem 1fr;
+        gap: 0.5rem var(--space-sm);
+      }
+      .step-ai-content {
+        grid-column: 2;
+        padding-top: 0.25rem;
+      }
     }
 
     @media (max-width: 600px) {
       .tools-grid { grid-template-columns: 1fr; }
+      .formats-grid { grid-template-columns: 1fr; }
       nav .links { display: none; }
     }
   </style>
@@ -1041,29 +706,27 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="hero-kicker reveal">Strategy Overview</div>
-    <h1 class="reveal reveal-delay-1">AI-Native<br>Development<br>at <span>REX</span></h1>
-    <p class="hero-desc reveal reveal-delay-2">
+    <h1 class="reveal">AI-Native<br>Development<br>at <span>REX</span></h1>
+    <p class="hero-desc reveal reveal-delay-1">
       A structured approach to making teams and codebases AI-native across the organization.
       From individual developer setup to team workflows to organizational scale.
     </p>
-    <div class="hero-sections reveal reveal-delay-3">
-      <a href="#layers">01 Improvement Layers</a>
-      <a href="#lifecycle">02 Dev Lifecycle</a>
-      <a href="#skills">03 Agent skills roadmap</a>
-      <a href="#ecosystem">04 AI Ecosystem</a>
-      <a href="#teaching">05 Teaching Strategy</a>
+    <div class="hero-sections reveal reveal-delay-2">
+      <a href="#layers">Improvement Layers</a>
+      <a href="#lifecycle">Dev Lifecycle</a>
+      <a href="#skills">Agent Skills</a>
+      <a href="#ecosystem">AI Ecosystem</a>
+      <a href="#teaching">Teaching Strategy</a>
     </div>
   </header>
 
   <!-- SECTION 1: IMPROVEMENT LAYERS -->
   <section id="layers">
-    <div class="section-number reveal">01</div>
-    <h2 class="section-title reveal">Improvement layers</h2>
-    <p class="section-subtitle reveal">There are three layers to improve. Start with the individual. Enable the codebase. Then the team ships differently. Each layer enables the next.</p>
+    <h2 class="section-title reveal">Improvement Layers</h2>
+    <p class="section-subtitle reveal">Three layers to improve. Start with the individual. Enable the codebase. Then the team ships differently. Each layer enables the next.</p>
 
     <div class="layers-stack">
-      <div class="layer layer-1 reveal">
+      <div class="layer reveal">
         <div class="layer-header">
           <span class="layer-number">Layer 1</span>
           <span class="layer-name">Individual Developer</span>
@@ -1098,10 +761,7 @@
         </div>
       </div>
 
-      <div class="layer-arrow reveal">
-      </div>
-
-      <div class="layer layer-2 reveal reveal-delay-1">
+      <div class="layer reveal reveal-delay-1">
         <div class="layer-header">
           <span class="layer-number">Layer 2</span>
           <span class="layer-name">Project / Codebase</span>
@@ -1135,10 +795,7 @@
         </div>
       </div>
 
-      <div class="layer-arrow reveal">
-      </div>
-
-      <div class="layer layer-3 reveal reveal-delay-2">
+      <div class="layer reveal reveal-delay-2">
         <div class="layer-header">
           <span class="layer-number">Layer 3</span>
           <span class="layer-name">Team Workflow</span>
@@ -1176,80 +833,131 @@
 
   <!-- SECTION 2: DEV LIFECYCLE -->
   <section id="lifecycle">
-    <div class="section-number reveal">02</div>
     <h2 class="section-title reveal">The Development Lifecycle</h2>
-    <p class="section-subtitle reveal">AI enablement in the development lifecycle is essential. Nine steps from idea to production. Quality Assurance is the biggest phase because shipping broken code with AI is worse than shipping it without.</p>
+    <p class="section-subtitle reveal">Nine steps from idea to production. Quality Assurance is the biggest phase because shipping broken code with AI is worse than shipping it without.</p>
 
-    <div class="lifecycle-wrapper reveal reveal-delay-1">
-      <div class="lifecycle-phases">
-        <div class="phase phase-prepare">Prepare</div>
-        <div class="phase phase-build">Build</div>
-        <div class="phase phase-qa">Quality Assurance</div>
-        <div class="phase phase-ship">Ship</div>
-      </div>
-      <div class="lifecycle-track">
-        <div class="lifecycle-line"></div>
+    <div class="reveal reveal-delay-1">
+
+      <div class="lifecycle-group">
+        <div class="lifecycle-phase-label">Prepare</div>
         <div class="lifecycle-step">
-          <div class="step-dot step-dot-prepare">1</div>
-          <div class="step-label">Input</div>
-          <div class="step-desc">Gather context, requirements, domain knowledge</div>
-          <div class="step-ai">AI summarizes docs and gathers context</div>
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-label">Input</div>
+            <div class="step-desc">Gather context, requirements, domain knowledge</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Summarizes docs, gathers context from codebase and documentation</div>
+          </div>
         </div>
         <div class="lifecycle-step">
-          <div class="step-dot step-dot-prepare">2</div>
-          <div class="step-label">Clarity</div>
-          <div class="step-desc">Define scope, success criteria, acceptance tests</div>
-          <div class="step-ai">AI identifies edge cases and gaps</div>
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-label">Clarity</div>
+            <div class="step-desc">Define scope, success criteria, acceptance tests</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Identifies edge cases, gaps in requirements, missing acceptance criteria</div>
+          </div>
         </div>
         <div class="lifecycle-step">
-          <div class="step-dot step-dot-prepare">3</div>
-          <div class="step-label">Plan</div>
-          <div class="step-desc">Architecture, approach, task breakdown</div>
-          <div class="step-ai">AI proposes architecture and breaks down tasks</div>
-        </div>
-        <div class="lifecycle-step">
-          <div class="step-dot step-dot-build">4</div>
-          <div class="step-label">Execute</div>
-          <div class="step-desc">Build with AI, write code, iterate</div>
-          <div class="step-ai">AI writes code, you guide direction</div>
-        </div>
-        <div class="lifecycle-step">
-          <div class="step-dot step-dot-validate">5</div>
-          <div class="step-label">Test</div>
-          <div class="step-desc">Unit, integration, e2e tests pass</div>
-          <div class="step-ai">AI generates test cases and validates coverage</div>
-        </div>
-        <div class="lifecycle-step">
-          <div class="step-dot step-dot-validate">6</div>
-          <div class="step-label">CI Pipeline</div>
-          <div class="step-desc">Lint, type check, security scan, build</div>
-          <div class="step-ai">Automated checks, AI-configured rules</div>
-        </div>
-        <div class="lifecycle-step">
-          <div class="step-dot step-dot-validate">7</div>
-          <div class="step-label">AI Review</div>
-          <div class="step-desc">Automated code review, quality validation</div>
-          <div class="step-ai">AI reviews for quality, security, domain fit</div>
-        </div>
-        <div class="lifecycle-step">
-          <div class="step-dot step-dot-validate">8</div>
-          <div class="step-label">Human Review</div>
-          <div class="step-desc">Team review, approval, knowledge transfer</div>
-          <div class="step-ai">AI summarizes changes, highlights risk areas</div>
-        </div>
-        <div class="lifecycle-step">
-          <div class="step-dot step-dot-ship">9</div>
-          <div class="step-label">Ship</div>
-          <div class="step-desc">Deploy, monitor, validate in production</div>
-          <div class="step-ai">AI monitors and alerts on anomalies</div>
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-label">Plan</div>
+            <div class="step-desc">Architecture, approach, task breakdown</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Proposes architecture, breaks down tasks, identifies dependencies</div>
+          </div>
         </div>
       </div>
+
+      <div class="lifecycle-group">
+        <div class="lifecycle-phase-label">Build</div>
+        <div class="lifecycle-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <div class="step-label">Execute</div>
+            <div class="step-desc">Build with AI, write code, iterate</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Writes code, suggests implementations, you guide direction and review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lifecycle-group">
+        <div class="lifecycle-phase-label">Quality Assurance</div>
+        <div class="lifecycle-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <div class="step-label">Test</div>
+            <div class="step-desc">Unit, integration, e2e tests pass</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Generates test cases, validates coverage, catches regressions</div>
+          </div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <div class="step-label">CI Pipeline</div>
+            <div class="step-desc">Lint, type check, security scan, build</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Automated checks run with AI-configured rules and quality gates</div>
+          </div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-number">7</div>
+          <div class="step-content">
+            <div class="step-label">AI Review</div>
+            <div class="step-desc">Automated code review, quality validation</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Reviews for correctness, security vulnerabilities, and domain fit</div>
+          </div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-number">8</div>
+          <div class="step-content">
+            <div class="step-label">Human Review</div>
+            <div class="step-desc">Team review, approval, knowledge transfer</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Summarizes changes, highlights risk areas, generates PR descriptions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lifecycle-group">
+        <div class="lifecycle-phase-label">Ship</div>
+        <div class="lifecycle-step">
+          <div class="step-number">9</div>
+          <div class="step-content">
+            <div class="step-label">Ship</div>
+            <div class="step-desc">Deploy, monitor, validate in production</div>
+          </div>
+          <div class="step-ai-content">
+            <div class="step-ai-label">AI enables</div>
+            <div class="step-ai-desc">Monitors deployments, alerts on anomalies, validates production behavior</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- SECTION 3: Agent skills roadmap -->
+  <!-- SECTION 3: AGENT SKILLS ROADMAP -->
   <section id="skills">
-    <div class="section-number reveal">03</div>
     <h2 class="section-title reveal">Agent Skills Roadmap</h2>
     <p class="section-subtitle reveal">Skills organized by layer. Core skills should be adopted first. Extended skills add depth once the foundation is in place.</p>
 
@@ -1257,7 +965,7 @@
 
       <div class="skills-layer-col reveal">
         <div class="skills-layer-header">
-          <div class="teaching-layer-tag teaching-layer-tag-1">Layer 1</div>
+          <div class="skills-layer-tag">Layer 1</div>
           <div class="skills-layer-title">Individual</div>
         </div>
         <div class="skill-entry">
@@ -1306,7 +1014,7 @@
 
       <div class="skills-layer-col reveal reveal-delay-1">
         <div class="skills-layer-header">
-          <div class="teaching-layer-tag teaching-layer-tag-2">Layer 2</div>
+          <div class="skills-layer-tag">Layer 2</div>
           <div class="skills-layer-title">Project</div>
         </div>
         <div class="skill-entry">
@@ -1376,7 +1084,7 @@
 
       <div class="skills-layer-col reveal reveal-delay-2">
         <div class="skills-layer-header">
-          <div class="teaching-layer-tag teaching-layer-tag-3">Layer 3</div>
+          <div class="skills-layer-tag">Layer 3</div>
           <div class="skills-layer-title">Workflow</div>
         </div>
         <div class="skill-entry">
@@ -1433,89 +1141,93 @@
 
   <!-- SECTION 4: AI ECOSYSTEM -->
   <section id="ecosystem">
-    <div class="section-number reveal">04</div>
     <h2 class="section-title reveal">The AI Ecosystem</h2>
     <p class="section-subtitle reveal">Four layers of the AI stack. Your configuration shapes how interfaces use models that run on infrastructure. Know what each does and how they connect.</p>
 
-    <div class="reveal reveal-delay-1" style="margin-bottom: var(--space-xl);">
-      <svg viewBox="0 0 800 530" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 900px; height: auto; font-family: 'Archivo', system-ui, sans-serif;">
+    <div class="reveal reveal-delay-1">
+      <svg viewBox="0 0 800 570" xmlns="http://www.w3.org/2000/svg" class="ecosystem-diagram">
         <defs>
-          <marker id="arr" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-auto">
-            <path d="M0 0 L10 4 L0 8 z" fill="oklch(0.55 0.006 55)"/>
+          <marker id="arr" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="7" markerHeight="5" orient="auto-start-auto">
+            <path d="M0 0 L10 4 L0 8 z" fill="oklch(0.68 0.004 55)"/>
           </marker>
-          <marker id="arr-green" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-auto">
-            <path d="M0 0 L10 4 L0 8 z" fill="oklch(0.50 0.13 158)"/>
+          <marker id="arr-accent" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="7" markerHeight="5" orient="auto-start-auto">
+            <path d="M0 0 L10 4 L0 8 z" fill="oklch(0.48 0.06 158)"/>
           </marker>
         </defs>
 
-        <!-- DEVELOPER BOX -->
-        <rect x="200" y="8" width="400" height="52" rx="10" fill="oklch(0.38 0.10 158)"/>
-        <text x="400" y="32" text-anchor="middle" fill="oklch(0.97 0.01 158)" font-weight="800" font-size="15" letter-spacing="0.08em">DEVELOPER</text>
-        <text x="400" y="48" text-anchor="middle" fill="oklch(0.97 0.01 158)" font-size="10" opacity="0.6" font-weight="500">You configure and use</text>
+        <!-- DEVELOPER (person icon) -->
+        <circle cx="400" cy="22" r="12" fill="oklch(0.48 0.06 158)"/>
+        <rect x="390" y="37" width="20" height="18" rx="5" fill="oklch(0.48 0.06 158)"/>
+        <text x="400" y="74" text-anchor="middle" fill="oklch(0.18 0.01 55)" font-weight="800" font-size="13" letter-spacing="0.04em">Developer</text>
+        <text x="400" y="88" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="9" font-weight="400">You configure and use</text>
 
-        <!-- Arrow: Developer to Config -->
-        <path d="M300 60 L195 120" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="4 3"/>
-        <!-- Label: CONFIGURES (offset left of arrow) -->
-        <rect x="185" y="76" width="72" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
-        <text x="221" y="87" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">CONFIGURES</text>
+        <!-- Arrow: Developer to Configuration -->
+        <path d="M340 82 L218 128" stroke="oklch(0.78 0.003 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="4 3"/>
+        <text x="258" y="98" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="8" font-weight="600" letter-spacing="0.05em">CONFIGURES</text>
 
         <!-- Arrow: Developer to Interfaces -->
-        <path d="M500 60 L605 120" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="4 3"/>
-        <!-- Label: USES (offset right of arrow) -->
-        <rect x="560" y="76" width="38" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
-        <text x="579" y="87" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">USES</text>
+        <path d="M460 82 L582 128" stroke="oklch(0.78 0.003 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="4 3"/>
+        <text x="542" y="98" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="8" font-weight="600" letter-spacing="0.05em">USES</text>
 
         <!-- CONFIGURATION BOX -->
-        <rect x="40" y="125" width="330" height="160" rx="10" fill="oklch(0.92 0.035 158)"/>
-        <text x="205" y="153" text-anchor="middle" fill="oklch(0.28 0.08 158)" font-weight="800" font-size="14">Configuration</text>
-        <text x="205" y="170" text-anchor="middle" fill="oklch(0.38 0.10 158)" font-size="10" font-weight="500" opacity="0.7">Shapes AI behavior per project</text>
-        <text x="70" y="196" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">AGENTS.md / CLAUDE.md</text>
-        <text x="70" y="216" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">Skills &amp; MCP Servers</text>
-        <text x="70" y="236" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">Rules &amp; Hooks</text>
-        <text x="70" y="256" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">Domain Knowledge</text>
+        <rect x="50" y="132" width="310" height="132" rx="10" fill="oklch(0.965 0.004 75)" stroke="oklch(0.90 0.005 75)" stroke-width="1"/>
+        <text x="205" y="158" text-anchor="middle" fill="oklch(0.18 0.01 55)" font-weight="800" font-size="13">Configuration</text>
+        <text x="205" y="173" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="9" font-weight="400">Lives in your codebase</text>
+        <text x="78" y="196" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">AGENTS.md / CLAUDE.md</text>
+        <text x="78" y="214" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">Skills &amp; MCP Servers</text>
+        <text x="78" y="232" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">Rules &amp; Hooks</text>
+        <text x="78" y="250" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">Domain Knowledge</text>
 
         <!-- INTERFACES BOX -->
-        <rect x="430" y="125" width="330" height="160" rx="10" fill="oklch(0.95 0.035 70)"/>
-        <text x="595" y="153" text-anchor="middle" fill="oklch(0.42 0.12 70)" font-weight="800" font-size="14">Interfaces</text>
-        <text x="595" y="170" text-anchor="middle" fill="oklch(0.52 0.13 70)" font-size="10" font-weight="500" opacity="0.7">How developers interact with AI</text>
-        <text x="460" y="196" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">Claude Code (CLI)</text>
-        <text x="460" y="216" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">GitHub Copilot (IDE)</text>
-        <text x="460" y="236" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">Web Chat (Claude.ai, ChatGPT)</text>
-        <text x="460" y="256" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">CLI Tools (OpenCode, Aider)</text>
+        <rect x="440" y="132" width="310" height="132" rx="10" fill="oklch(0.965 0.004 75)" stroke="oklch(0.90 0.005 75)" stroke-width="1"/>
+        <text x="595" y="158" text-anchor="middle" fill="oklch(0.18 0.01 55)" font-weight="800" font-size="13">Interfaces</text>
+        <text x="595" y="173" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="9" font-weight="400">Tools on your machine</text>
+        <text x="468" y="196" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">Claude Code (CLI)</text>
+        <text x="468" y="214" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">GitHub Copilot (IDE)</text>
+        <text x="468" y="232" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">Web Chat (Claude.ai, ChatGPT)</text>
+        <text x="468" y="250" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">CLI Tools (Aider, OpenCode)</text>
 
-        <!-- Arrow: Config shapes Interfaces (horizontal between boxes) -->
-        <line x1="370" y1="205" x2="428" y2="205" stroke="oklch(0.50 0.13 158)" stroke-width="2" marker-end="url(#arr-green)"/>
-        <rect x="377" y="193" width="48" height="14" rx="4" fill="oklch(0.96 0.015 158)"/>
-        <text x="401" y="203" text-anchor="middle" fill="oklch(0.38 0.10 158)" font-size="8" font-weight="700" letter-spacing="0.05em">SHAPES</text>
+        <!-- Arrow: Config shapes Interfaces -->
+        <line x1="360" y1="198" x2="438" y2="198" stroke="oklch(0.48 0.06 158)" stroke-width="1.5" marker-end="url(#arr-accent)"/>
+        <text x="399" y="192" text-anchor="middle" fill="oklch(0.48 0.06 158)" font-size="7.5" font-weight="700" letter-spacing="0.05em">SHAPES</text>
 
-        <!-- Arrow: Config down to Models -->
-        <path d="M205 285 L340 355" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <!-- Label: INSTRUCTS (offset to left of arrow) -->
-        <rect x="215" y="310" width="68" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
-        <text x="249" y="321" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">INSTRUCTS</text>
+        <!-- Arrow: Config down to Infrastructure -->
+        <path d="M205 264 L300 340" stroke="oklch(0.78 0.003 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <text x="228" y="300" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="8" font-weight="600" letter-spacing="0.05em">INSTRUCTS</text>
 
-        <!-- Arrow: Interfaces down to Models -->
-        <path d="M595 285 L460 355" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <!-- Label: CALLS (offset to right of arrow) -->
-        <rect x="525" y="310" width="42" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
-        <text x="546" y="321" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">CALLS</text>
+        <!-- Arrow: Interfaces down to Infrastructure -->
+        <path d="M595 264 L500 340" stroke="oklch(0.78 0.003 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <text x="572" y="300" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="8" font-weight="600" letter-spacing="0.05em">CALLS</text>
 
-        <!-- MODELS BOX -->
-        <rect x="175" y="355" width="450" height="75" rx="10" fill="oklch(0.94 0.005 260)"/>
-        <text x="400" y="382" text-anchor="middle" fill="oklch(0.32 0.03 260)" font-weight="800" font-size="14">Models</text>
-        <text x="400" y="402" text-anchor="middle" fill="oklch(0.40 0.02 260)" font-size="11" font-weight="500">Claude (Anthropic)  ·  GPT (OpenAI)  ·  Gemini (Google)</text>
-        <text x="400" y="418" text-anchor="middle" fill="oklch(0.55 0.01 260)" font-size="9" font-weight="400">Reasoning depth · Context window · Speed · Cost</text>
+        <!-- INFRASTRUCTURE BOX (large outer) -->
+        <rect x="50" y="345" width="700" height="215" rx="12" fill="oklch(0.945 0.003 75)" stroke="oklch(0.88 0.005 75)" stroke-width="1.5"/>
+        <text x="400" y="372" text-anchor="middle" fill="oklch(0.18 0.01 55)" font-weight="800" font-size="14" letter-spacing="0.03em">Infrastructure</text>
 
-        <!-- Arrow: Models down to Infrastructure -->
-        <path d="M400 430 L400 458" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <!-- Label: HOSTED ON -->
-        <rect x="413" y="437" width="62" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
-        <text x="444" y="448" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">HOSTED ON</text>
+        <!-- AZURE FOUNDRY (nested inside Infrastructure) -->
+        <rect x="75" y="388" width="440" height="148" rx="8" fill="oklch(0.975 0.002 75)" stroke="oklch(0.88 0.005 75)" stroke-width="1"/>
+        <text x="295" y="410" text-anchor="middle" fill="oklch(0.30 0.008 55)" font-weight="700" font-size="12">Azure Foundry</text>
+        <text x="295" y="424" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="9" font-weight="400">Hosts and routes AI models</text>
 
-        <!-- INFRASTRUCTURE BOX -->
-        <rect x="100" y="462" width="600" height="58" rx="10" fill="oklch(0.93 0.03 290)"/>
-        <text x="400" y="487" text-anchor="middle" fill="oklch(0.30 0.07 290)" font-weight="800" font-size="14">Infrastructure</text>
-        <text x="400" y="506" text-anchor="middle" fill="oklch(0.40 0.06 290)" font-size="11" font-weight="500">Azure OpenAI  ·  Azure Foundry  ·  Access &amp; Auth</text>
+        <!-- Model pills inside Azure Foundry -->
+        <rect x="98" y="440" width="118" height="32" rx="6" fill="oklch(0.985 0.002 75)" stroke="oklch(0.88 0.005 75)" stroke-width="1"/>
+        <text x="157" y="460" text-anchor="middle" fill="oklch(0.30 0.008 55)" font-size="10" font-weight="600">OpenAI Models</text>
+
+        <rect x="228" y="440" width="118" height="32" rx="6" fill="oklch(0.985 0.002 75)" stroke="oklch(0.88 0.005 75)" stroke-width="1"/>
+        <text x="287" y="460" text-anchor="middle" fill="oklch(0.30 0.008 55)" font-size="10" font-weight="600">Claude Models</text>
+
+        <rect x="358" y="440" width="138" height="32" rx="6" fill="oklch(0.985 0.002 75)" stroke="oklch(0.88 0.005 75)" stroke-width="1"/>
+        <text x="427" y="460" text-anchor="middle" fill="oklch(0.30 0.008 55)" font-size="10" font-weight="600">GitHub Copilot</text>
+
+        <text x="295" y="506" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="9" font-weight="400">Reasoning depth  ·  Context window  ·  Speed  ·  Cost</text>
+
+        <!-- ACCESS & AUTH (right side inside Infrastructure) -->
+        <rect x="535" y="388" width="195" height="148" rx="8" fill="oklch(0.975 0.002 75)" stroke="oklch(0.88 0.005 75)" stroke-width="1"/>
+        <text x="632" y="410" text-anchor="middle" fill="oklch(0.30 0.008 55)" font-weight="700" font-size="12">Access &amp; Auth</text>
+        <text x="632" y="426" text-anchor="middle" fill="oklch(0.56 0.005 55)" font-size="9" font-weight="400">Controls and governance</text>
+        <text x="558" y="452" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">API Keys</text>
+        <text x="558" y="470" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">SSO</text>
+        <text x="558" y="488" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">Model Permissions</text>
+        <text x="558" y="506" fill="oklch(0.40 0.007 55)" font-size="10" font-weight="500">Usage Tracking</text>
       </svg>
     </div>
 
@@ -1560,7 +1272,7 @@
         <div class="tool-best-for">Platform layer</div>
         <ul class="tool-examples">
           <li><span class="tool-item-name">Azure OpenAI</span><span class="tool-item-desc">Enterprise GPT access with data residency, compliance, and rate limits you control.</span></li>
-          <li><span class="tool-item-name">Azure Foundry</span><span class="tool-item-desc">Hosts and routes models (OpenAI, Claude, Copilot models). Connects interfaces to approved models.</span></li>
+          <li><span class="tool-item-name">Azure Foundry</span><span class="tool-item-desc">Hosts and routes models (OpenAI, Claude, Copilot). Connects interfaces to approved models.</span></li>
           <li><span class="tool-item-name">Access and Auth</span><span class="tool-item-desc">API keys, SSO, model permissions. Who can use what, and how usage is tracked.</span></li>
         </ul>
       </div>
@@ -1569,71 +1281,60 @@
 
   <!-- SECTION 5: TEACHING STRATEGY -->
   <section id="teaching">
-    <div class="section-number reveal">05</div>
     <h2 class="section-title reveal">Teaching Strategy</h2>
-    <p class="section-subtitle reveal">One deep talk that maps the full picture. Twelve lightning talks carved from it, organized by layer. Present everywhere, teach by doing.</p>
+    <p class="section-subtitle reveal">We go deep on core topics and cover specific concepts through lighter sessions. Hands-on delivery, shareable artifacts, learning by doing.</p>
 
-    <div class="teaching-layers-grid">
-      <div class="teaching-deep reveal" style="grid-column: 1 / -1;">
-        <div class="teaching-deep-kicker">Flagship Deep Talk</div>
-        <div class="teaching-deep-title">AI-Native Development: From Individual to Team to Organization</div>
-        <div class="teaching-deep-desc">The complete strategy. Covers all three layers, the development lifecycle, the AI ecosystem, and the practical steps to make any team AI-native. Every lightning talk below is carved from this.</div>
-      </div>
-
-      <div class="teaching-layer-col reveal">
-        <div class="teaching-layer-tag teaching-layer-tag-1">Layer 1: Individual</div>
-        <div class="teaching-block-title">Developer Enablement</div>
-        <ul class="lightning-list">
-          <li><span class="lightning-number">01</span> Setting up your AI development environment</li>
-          <li><span class="lightning-number">02</span> Understanding LLM models: Claude vs GPT vs Gemini</li>
-          <li><span class="lightning-number">03</span> Context engineering: how to communicate with AI</li>
-          <li><span class="lightning-number">04</span> Your first week with Claude Code and GitHub Copilot</li>
+    <div class="teaching-topics-grid">
+      <div class="teaching-topics-col reveal">
+        <h3>Deep-Dive Topics</h3>
+        <ul class="topic-list">
+          <li><span class="topic-number">01</span> AI-Native Development: the full picture across all three layers</li>
+          <li><span class="topic-number">02</span> Context Engineering: communicating intent and providing context to AI</li>
+          <li><span class="topic-number">03</span> The AI Development Lifecycle: from input to ship</li>
+          <li><span class="topic-number">04</span> Making Codebases AI-Ready: AGENTS.md, hooks, testing, quality</li>
+          <li><span class="topic-number">05</span> Building and Sharing Agent Skills across REX teams</li>
         </ul>
       </div>
-
-      <div class="teaching-layer-col reveal reveal-delay-1">
-        <div class="teaching-layer-tag teaching-layer-tag-2">Layer 2: Project</div>
-        <div class="teaching-block-title">Codebase Readiness</div>
-        <ul class="lightning-list">
-          <li><span class="lightning-number">05</span> Making your codebase AI-friendly in 30 minutes</li>
-          <li><span class="lightning-number">06</span> Writing AGENTS.md and CLAUDE.md that actually work</li>
-          <li><span class="lightning-number">07</span> Pre-commit hooks, linting, and code quality for AI</li>
-          <li><span class="lightning-number">08</span> From legacy codebase to AI-ready: a practical guide</li>
+      <div class="teaching-topics-col reveal reveal-delay-1">
+        <h3>Lightning Talks</h3>
+        <ul class="topic-list">
+          <li><span class="topic-number">01</span> Setting up your AI development environment</li>
+          <li><span class="topic-number">02</span> Understanding LLM models: what makes them different</li>
+          <li><span class="topic-number">03</span> Writing AGENTS.md and CLAUDE.md that actually work</li>
+          <li><span class="topic-number">04</span> Pre-commit hooks and code quality for AI</li>
+          <li><span class="topic-number">05</span> AI code review: setup, results, and pitfalls</li>
+          <li><span class="topic-number">06</span> Your first week with Claude Code and GitHub Copilot</li>
+          <li><span class="topic-number">07</span> From legacy codebase to AI-ready</li>
+          <li><span class="topic-number">08</span> How we migrated SLS to CDK using AI and skills (KP RMS team)</li>
         </ul>
       </div>
+    </div>
 
-      <div class="teaching-layer-col reveal reveal-delay-2">
-        <div class="teaching-layer-tag teaching-layer-tag-3">Layer 3: Workflow</div>
-        <div class="teaching-block-title">Team Practices</div>
-        <ul class="lightning-list">
-          <li><span class="lightning-number">09</span> The development lifecycle with AI in the loop</li>
-          <li><span class="lightning-number">10</span> AI code review: setup, results, and pitfalls</li>
-          <li><span class="lightning-number">11</span> How we migrated SLS to CDK using AI and skills</li>
-          <li><span class="lightning-number">12</span> Building and sharing skills across REX teams</li>
-        </ul>
+    <div class="teaching-formats-title reveal">How We Deliver</div>
+    <div class="formats-grid">
+      <div class="format-card reveal">
+        <div class="format-card-title">Workshops</div>
+        <div class="format-card-desc">Hands-on building sessions. Set up environments, configure projects, create skills together in real time.</div>
       </div>
-
-      <div class="teaching-venues-row">
-        <div class="teaching-block reveal">
-          <div class="teaching-block-title">Venues</div>
-          <div class="venue-tags">
-            <span class="venue-tag">BoMi Talks</span>
-            <span class="venue-tag">AI DevCraft</span>
-            <span class="venue-tag secondary">Team Sessions</span>
-            <span class="venue-tag secondary">KP Demos</span>
-          </div>
-        </div>
-        <div class="teaching-block reveal reveal-delay-1">
-          <div class="teaching-block-title">Formats</div>
-          <div class="venue-tags">
-            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Live workshops</span>
-            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Video recordings</span>
-            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Handbooks</span>
-            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Tutorials</span>
-            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Templates</span>
-            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Boilerplates</span>
-          </div>
-        </div>
+      <div class="format-card reveal reveal-delay-1">
+        <div class="format-card-title">Show and Tell</div>
+        <div class="format-card-desc">Live demos of tools, workflows, and results. See what's working, share discoveries, learn from each other.</div>
+      </div>
+      <div class="format-card reveal reveal-delay-2">
+        <div class="format-card-title">Tutorials</div>
+        <div class="format-card-desc">Step-by-step written guides and walkthroughs. Follow at your own pace, reference later.</div>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-card-title">Boilerplates</div>
+        <div class="format-card-desc">Starter templates and project scaffolding. Get a new project AI-ready from day one.</div>
+      </div>
+      <div class="format-card reveal reveal-delay-1">
+        <div class="format-card-title">Scaffolding Tools</div>
+        <div class="format-card-desc">Generators that set up AI context, hooks, and configuration for existing projects.</div>
+      </div>
+      <div class="format-card reveal reveal-delay-2">
+        <div class="format-card-title">Video Recordings</div>
+        <div class="format-card-desc">All talks and workshops recorded and shared. Catch up async, revisit concepts, onboard new team members.</div>
       </div>
     </div>
   </section>

@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REX AI Enablement Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: oklch(0.985 0.005 85);
+      --surface: oklch(0.97 0.003 85);
+      --border: oklch(0.88 0.005 85);
+
+      --text: oklch(0.22 0.012 55);
+      --text-mid: oklch(0.45 0.008 55);
+      --text-muted: oklch(0.62 0.006 55);
+
+      --green-900: oklch(0.28 0.08 158);
+      --green-700: oklch(0.38 0.10 158);
+      --green-600: oklch(0.44 0.12 158);
+      --green-500: oklch(0.50 0.13 158);
+      --green-400: oklch(0.58 0.11 158);
+      --green-200: oklch(0.82 0.06 158);
+      --green-100: oklch(0.92 0.035 158);
+      --green-50: oklch(0.96 0.015 158);
+
+      --amber-700: oklch(0.52 0.13 70);
+      --amber-500: oklch(0.72 0.14 70);
+      --amber-400: oklch(0.78 0.12 70);
+      --amber-200: oklch(0.90 0.06 70);
+      --amber-100: oklch(0.95 0.035 70);
+
+      --slate-700: oklch(0.40 0.02 260);
+      --slate-200: oklch(0.88 0.01 260);
+      --slate-100: oklch(0.94 0.005 260);
+
+      --font-display: 'Archivo', system-ui, sans-serif;
+      --font-body: 'Lexend', system-ui, sans-serif;
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 3rem;
+      --space-xl: 5rem;
+      --space-2xl: 8rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- NAV --- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: oklch(0.985 0.005 85 / 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    nav .logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--green-700);
+      white-space: nowrap;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 0.25rem;
+      margin-left: auto;
+    }
+
+    nav a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--green-700);
+      background: var(--green-50);
+    }
+
+    /* --- SECTIONS --- */
+    section {
+      padding: var(--space-2xl) var(--space-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-number {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-400);
+      margin-bottom: var(--space-xs);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 55ch;
+      margin-bottom: var(--space-xl);
+    }
+
+    /* --- HERO --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: var(--space-lg);
+      padding-right: var(--space-lg);
+    }
+
+    .hero-kicker {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-500);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero h1 span {
+      color: var(--green-600);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 50ch;
+      line-height: 1.65;
+      margin-bottom: var(--space-xl);
+    }
+
+    .hero-sections {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .hero-sections a {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--text-mid);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-sections a:hover {
+      color: var(--green-700);
+      border-color: var(--green-200);
+      background: var(--green-50);
+    }
+
+    /* --- LAYERS SECTION --- */
+    .layers-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .layer {
+      padding: var(--space-lg) var(--space-lg);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .layer-3 {
+      background: var(--green-700);
+      color: oklch(0.97 0.01 158);
+    }
+    .layer-3 .layer-items-label { color: oklch(0.80 0.04 158); }
+    .layer-3 .layer-tag { background: oklch(0.97 0.01 158 / 0.15); color: oklch(0.95 0.01 158); }
+
+    .layer-2 {
+      background: var(--green-200);
+      color: var(--green-900);
+    }
+    .layer-2 .layer-items-label { color: var(--green-600); }
+    .layer-2 .layer-tag { background: oklch(0.98 0.005 158 / 0.7); color: var(--green-700); }
+
+    .layer-1 {
+      background: var(--green-50);
+      color: var(--green-900);
+    }
+    .layer-1 .layer-items-label { color: var(--green-500); }
+    .layer-1 .layer-tag { background: oklch(0.99 0.003 158 / 0.8); color: var(--green-600); }
+
+    .layer-header {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-sm);
+      margin-bottom: 0.35rem;
+    }
+
+    .layer-number {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .layer-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      line-height: 1.2;
+    }
+
+    .layer-question {
+      font-weight: 300;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: var(--space-md);
+      font-style: italic;
+    }
+
+    .layer-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .layer-items-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .layer-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 400;
+      padding: 0.25rem 0.6rem;
+      border-radius: 5px;
+      margin: 0.15rem 0.15rem 0.15rem 0;
+    }
+
+    .layer-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0;
+      color: var(--green-400);
+      font-size: 0.7rem;
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      gap: 0.5rem;
+    }
+
+    .layer-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* --- LIFECYCLE SECTION --- */
+    .lifecycle-wrapper {
+      overflow-x: auto;
+      padding-bottom: var(--space-sm);
+    }
+
+    .lifecycle-phases {
+      display: flex;
+      gap: 0;
+      margin-bottom: var(--space-md);
+      min-width: 1000px;
+    }
+
+    .phase {
+      flex: 1;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .phase-prepare { background: var(--green-100); color: var(--green-700); flex: 3; }
+    .phase-build { background: var(--amber-100); color: var(--amber-700); flex: 1; }
+    .phase-qa { background: var(--slate-100); color: var(--slate-700); flex: 4; }
+    .phase-ship { background: oklch(0.93 0.04 30); color: oklch(0.45 0.10 30); flex: 1; }
+
+    .lifecycle-track {
+      display: flex;
+      align-items: center;
+      min-width: 1000px;
+      position: relative;
+    }
+
+    .lifecycle-line {
+      position: absolute;
+      top: 20px;
+      left: 2rem;
+      right: 2rem;
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .lifecycle-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: oklch(0.98 0.005 85);
+      margin-bottom: 0.75rem;
+    }
+
+    .step-dot-prepare { background: var(--green-500); }
+    .step-dot-build { background: var(--amber-500); }
+    .step-dot-validate { background: var(--slate-700); }
+    .step-dot-ship { background: oklch(0.50 0.12 30); }
+
+    .step-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 100px;
+    }
+
+    /* --- SKILLS SECTION --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: var(--space-lg) 0;
+      align-items: start;
+    }
+
+    .wave-header {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      align-items: center;
+      margin-bottom: var(--space-sm);
+    }
+
+    .wave-label {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .wave-1-label {
+      background: var(--green-100);
+      color: var(--green-700);
+    }
+
+    .wave-2-label {
+      background: var(--amber-100);
+      color: var(--amber-700);
+    }
+
+    .wave-arrow-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .skills-row {
+      display: contents;
+    }
+
+    .skill-item {
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-item:hover {
+      border-color: var(--green-200);
+      box-shadow: 0 2px 12px oklch(0.50 0.13 158 / 0.08);
+    }
+
+    .skill-item.wave-2 {
+      border-color: var(--amber-200);
+    }
+
+    .skill-item.wave-2:hover {
+      border-color: var(--amber-400);
+      box-shadow: 0 2px 12px oklch(0.72 0.14 70 / 0.1);
+    }
+
+    .skill-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .skill-name code {
+      font-family: 'Archivo', monospace;
+      font-weight: 700;
+      background: none;
+      padding: 0;
+    }
+
+    .skill-desc {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .skill-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    .skill-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* --- TOOLS SECTION --- */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .tool-col {
+      background: var(--bg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tool-col-header {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .tool-col-type {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tool-col:nth-child(1) .tool-col-type { border-color: var(--green-400); }
+    .tool-col:nth-child(2) .tool-col-type { border-color: var(--amber-400); }
+    .tool-col:nth-child(3) .tool-col-type { border-color: var(--slate-200); }
+    .tool-col:nth-child(4) .tool-col-type { border-color: oklch(0.60 0.10 290); }
+
+    .tool-best-for {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .tool-examples {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .tool-examples li {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .tool-examples li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    /* --- TEACHING SECTION --- */
+    .teaching-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .teaching-deep {
+      padding: var(--space-lg);
+      background: var(--green-700);
+      border-radius: 12px;
+      color: oklch(0.97 0.01 158);
+      grid-column: 1 / -1;
+    }
+
+    .teaching-deep-kicker {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: var(--space-xs);
+    }
+
+    .teaching-deep-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      line-height: 1.2;
+      margin-bottom: var(--space-xs);
+    }
+
+    .teaching-deep-desc {
+      font-weight: 300;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      max-width: 60ch;
+    }
+
+    .teaching-block {
+      padding: var(--space-lg);
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+    }
+
+    .teaching-block-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .lightning-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .lightning-list li {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .lightning-number {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: var(--green-400);
+      min-width: 1.5rem;
+    }
+
+    .venue-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .venue-tag {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      background: var(--green-50);
+      color: var(--green-700);
+    }
+
+    .venue-tag.secondary {
+      background: var(--amber-100);
+      color: var(--amber-700);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: var(--space-xl) var(--space-lg);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* --- ANIMATIONS --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      section { padding: var(--space-xl) var(--space-md); }
+      .hero { padding-left: var(--space-md); padding-right: var(--space-md); }
+      nav { padding: 0.75rem var(--space-md); }
+
+      .tools-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+      }
+      .wave-header { grid-template-columns: 1fr; }
+      .wave-arrow-col, .skill-arrow { display: none; }
+      .wave-2-label { margin-top: var(--space-md); }
+
+      .teaching-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .lifecycle-phases, .lifecycle-track {
+        min-width: 800px;
+      }
+    }
+
+    /* --- ECOSYSTEM STACK DIAGRAM --- */
+    .eco-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: var(--space-xl);
+      max-width: 700px;
+    }
+
+    .eco-band {
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 10px;
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-md);
+    }
+
+    .eco-band-config {
+      background: var(--green-100);
+      color: var(--green-900);
+    }
+
+    .eco-band-interfaces {
+      background: var(--amber-100);
+      color: var(--amber-700);
+    }
+
+    .eco-band-models {
+      background: var(--slate-100);
+      color: var(--slate-700);
+    }
+
+    .eco-band-infra {
+      background: oklch(0.93 0.03 290);
+      color: oklch(0.35 0.08 290);
+    }
+
+    .eco-band-label {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.85rem;
+      min-width: 130px;
+      white-space: nowrap;
+    }
+
+    .eco-band-items {
+      font-size: 0.78rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .eco-connector {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0 0.25rem var(--space-md);
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .eco-connector svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    /* --- LIFECYCLE AI ROLE --- */
+    .step-ai {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--green-500);
+      text-align: center;
+      max-width: 120px;
+      margin-top: 0.4rem;
+      line-height: 1.35;
+    }
+
+    /* --- SKILLS BY LAYER --- */
+    .skills-layer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .skills-layer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skills-layer-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-layer-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+
+    .skill-entry {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.2s;
+    }
+
+    .skill-entry:hover {
+      border-color: var(--green-200);
+    }
+
+    .skill-entry-header {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-entry-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .skill-badge {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+    }
+
+    .skill-badge-core {
+      background: var(--green-100);
+      color: var(--green-700);
+    }
+
+    .skill-badge-extended {
+      background: var(--amber-100);
+      color: var(--amber-700);
+    }
+
+    .skill-badge-installed {
+      background: oklch(0.92 0.04 160);
+      color: oklch(0.32 0.08 160);
+    }
+
+    .skill-badge-ecosystem {
+      background: var(--slate-100);
+      color: var(--slate-700);
+    }
+
+    .skill-badge-build {
+      background: oklch(0.93 0.04 30);
+      color: oklch(0.42 0.10 30);
+    }
+
+    .skill-source {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .skill-entry-desc {
+      font-size: 0.75rem;
+      color: var(--text-mid);
+      line-height: 1.4;
+    }
+
+    .skill-creation-banner {
+      grid-column: 1 / -1;
+      padding: var(--space-md) var(--space-lg);
+      background: var(--green-700);
+      color: oklch(0.97 0.01 158);
+      border-radius: 10px;
+      margin-top: var(--space-sm);
+    }
+
+    .skill-creation-banner-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .skill-creation-banner-desc {
+      font-weight: 300;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      max-width: 65ch;
+      line-height: 1.5;
+    }
+
+    .skill-creation-steps {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .skill-creation-step {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      background: oklch(0.97 0.01 158 / 0.15);
+    }
+
+    @media (max-width: 900px) {
+      .skills-layer-grid { grid-template-columns: 1fr; }
+      .eco-stack { max-width: 100%; }
+    }
+
+    .tool-item-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text);
+      display: block;
+    }
+
+    .tool-item-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    .teaching-layers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .teaching-layer-col {
+      padding: var(--space-md);
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+    }
+
+    .teaching-layer-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .teaching-layer-tag-1 { background: var(--green-50); color: var(--green-600); }
+    .teaching-layer-tag-2 { background: var(--green-100); color: var(--green-700); }
+    .teaching-layer-tag-3 { background: var(--green-700); color: oklch(0.95 0.01 158); }
+
+    .teaching-venues-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    @media (max-width: 900px) {
+      .teaching-layers-grid { grid-template-columns: 1fr; }
+      .teaching-venues-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .tools-grid { grid-template-columns: 1fr; }
+      nav .links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">REX AI Enablement</div>
+    <div class="links">
+      <a href="#layers">Layers</a>
+      <a href="#lifecycle">Lifecycle</a>
+      <a href="#skills">Skills</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#teaching">Teaching</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-kicker reveal">Strategy Overview</div>
+    <h1 class="reveal reveal-delay-1">AI-Native<br>Development<br>at <span>REX</span></h1>
+    <p class="hero-desc reveal reveal-delay-2">
+      A structured approach to making teams and codebases AI-native across the organization.
+      From individual developer setup to team workflows to organizational scale.
+    </p>
+    <div class="hero-sections reveal reveal-delay-3">
+      <a href="#layers">01 Improvement Layers</a>
+      <a href="#lifecycle">02 Dev Lifecycle</a>
+      <a href="#skills">03 Agent skills roadmap</a>
+      <a href="#ecosystem">04 AI Ecosystem</a>
+      <a href="#teaching">05 Teaching Strategy</a>
+    </div>
+  </header>
+
+  <!-- SECTION 1: IMPROVEMENT LAYERS -->
+  <section id="layers">
+    <div class="section-number reveal">01</div>
+    <h2 class="section-title reveal">Improvement layers</h2>
+    <p class="section-subtitle reveal">There are three layers to improve. Start with the individual. Enable the codebase. Then the team ships differently. Each layer enables the next.</p>
+
+    <div class="layers-stack">
+      <div class="layer layer-1 reveal">
+        <div class="layer-header">
+          <span class="layer-number">Layer 1</span>
+          <span class="layer-name">Individual Developer</span>
+        </div>
+        <div class="layer-question">"Help the person use AI effectively."</div>
+        <div class="layer-items">
+          <div>
+            <div class="layer-items-label">Environment</div>
+            <span class="layer-tag">Terminal setup</span>
+            <span class="layer-tag">VS Code</span>
+            <span class="layer-tag">Claude Code</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Prompting</div>
+            <span class="layer-tag">Context engineering</span>
+            <span class="layer-tag">Communicating intent</span>
+            <span class="layer-tag">Prompt patterns</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Skills</div>
+            <span class="layer-tag">Installing skills</span>
+            <span class="layer-tag">Skills registry</span>
+            <span class="layer-tag">Custom skills</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Tools</div>
+            <span class="layer-tag">Azure models</span>
+            <span class="layer-tag">GitHub Copilot</span>
+            <span class="layer-tag">MCP servers</span>
+            <span class="layer-tag">Foundry</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-arrow reveal">
+      </div>
+
+      <div class="layer layer-2 reveal reveal-delay-1">
+        <div class="layer-header">
+          <span class="layer-number">Layer 2</span>
+          <span class="layer-name">Project / Codebase</span>
+        </div>
+        <div class="layer-question">"Make the codebase ready for AI to work in."</div>
+        <div class="layer-items">
+          <div>
+            <div class="layer-items-label">AI Context</div>
+            <span class="layer-tag">AGENTS.md</span>
+            <span class="layer-tag">CLAUDE.md</span>
+            <span class="layer-tag">Domain docs</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Code Quality</div>
+            <span class="layer-tag">Pre-commit hooks</span>
+            <span class="layer-tag">Linting</span>
+            <span class="layer-tag">Prettier</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Testing</div>
+            <span class="layer-tag">TDD</span>
+            <span class="layer-tag">AI guardrails</span>
+            <span class="layer-tag">Validation</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Security</div>
+            <span class="layer-tag">npm audits</span>
+            <span class="layer-tag">Dependency hygiene</span>
+            <span class="layer-tag">Vulnerability scanning</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-arrow reveal">
+      </div>
+
+      <div class="layer layer-3 reveal reveal-delay-2">
+        <div class="layer-header">
+          <span class="layer-number">Layer 3</span>
+          <span class="layer-name">Team Workflow</span>
+        </div>
+        <div class="layer-question">"How does the team ship with AI in the loop?"</div>
+        <div class="layer-items">
+          <div>
+            <div class="layer-items-label">PR Workflow</div>
+            <span class="layer-tag">AI-generated descriptions</span>
+            <span class="layer-tag">PR templates</span>
+            <span class="layer-tag">Conventional commits</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Code Review</div>
+            <span class="layer-tag">AI review guidelines</span>
+            <span class="layer-tag">Domain-aware review</span>
+            <span class="layer-tag">CI integration</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Automation</div>
+            <span class="layer-tag">CI + AI pipeline</span>
+            <span class="layer-tag">Guardrails</span>
+            <span class="layer-tag">Quality gates</span>
+          </div>
+          <div>
+            <div class="layer-items-label">Ways of Working</div>
+            <span class="layer-tag">Dev lifecycle</span>
+            <span class="layer-tag">Ownership model</span>
+            <span class="layer-tag">Knowledge sharing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: DEV LIFECYCLE -->
+  <section id="lifecycle">
+    <div class="section-number reveal">02</div>
+    <h2 class="section-title reveal">The Development Lifecycle</h2>
+    <p class="section-subtitle reveal">AI enablement in the development lifecycle is essential. Nine steps from idea to production. Quality Assurance is the biggest phase because shipping broken code with AI is worse than shipping it without.</p>
+
+    <div class="lifecycle-wrapper reveal reveal-delay-1">
+      <div class="lifecycle-phases">
+        <div class="phase phase-prepare">Prepare</div>
+        <div class="phase phase-build">Build</div>
+        <div class="phase phase-qa">Quality Assurance</div>
+        <div class="phase phase-ship">Ship</div>
+      </div>
+      <div class="lifecycle-track">
+        <div class="lifecycle-line"></div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-prepare">1</div>
+          <div class="step-label">Input</div>
+          <div class="step-desc">Gather context, requirements, domain knowledge</div>
+          <div class="step-ai">AI summarizes docs and gathers context</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-prepare">2</div>
+          <div class="step-label">Clarity</div>
+          <div class="step-desc">Define scope, success criteria, acceptance tests</div>
+          <div class="step-ai">AI identifies edge cases and gaps</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-prepare">3</div>
+          <div class="step-label">Plan</div>
+          <div class="step-desc">Architecture, approach, task breakdown</div>
+          <div class="step-ai">AI proposes architecture and breaks down tasks</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-build">4</div>
+          <div class="step-label">Execute</div>
+          <div class="step-desc">Build with AI, write code, iterate</div>
+          <div class="step-ai">AI writes code, you guide direction</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-validate">5</div>
+          <div class="step-label">Test</div>
+          <div class="step-desc">Unit, integration, e2e tests pass</div>
+          <div class="step-ai">AI generates test cases and validates coverage</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-validate">6</div>
+          <div class="step-label">CI Pipeline</div>
+          <div class="step-desc">Lint, type check, security scan, build</div>
+          <div class="step-ai">Automated checks, AI-configured rules</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-validate">7</div>
+          <div class="step-label">AI Review</div>
+          <div class="step-desc">Automated code review, quality validation</div>
+          <div class="step-ai">AI reviews for quality, security, domain fit</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-validate">8</div>
+          <div class="step-label">Human Review</div>
+          <div class="step-desc">Team review, approval, knowledge transfer</div>
+          <div class="step-ai">AI summarizes changes, highlights risk areas</div>
+        </div>
+        <div class="lifecycle-step">
+          <div class="step-dot step-dot-ship">9</div>
+          <div class="step-label">Ship</div>
+          <div class="step-desc">Deploy, monitor, validate in production</div>
+          <div class="step-ai">AI monitors and alerts on anomalies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Agent skills roadmap -->
+  <section id="skills">
+    <div class="section-number reveal">03</div>
+    <h2 class="section-title reveal">Agent Skills Roadmap</h2>
+    <p class="section-subtitle reveal">Skills organized by layer. Core skills should be adopted first. Extended skills add depth once the foundation is in place.</p>
+
+    <div class="skills-layer-grid">
+
+      <div class="skills-layer-col reveal">
+        <div class="skills-layer-header">
+          <div class="teaching-layer-tag teaching-layer-tag-1">Layer 1</div>
+          <div class="skills-layer-title">Individual</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">code-discipline</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Behavioral guardrails for disciplined coding. Surface assumptions, write minimum code, make surgical changes, define success criteria.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">research</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Research-first workflow. Gathers verified, current information before answering or acting on any topic.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">environment-setup</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Interactive guide for AI dev environment: terminal, VS Code, Copilot, Claude Code, Foundry models.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">prompt-patterns</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Context engineering techniques. How to communicate intent, provide context, and get high-quality AI output.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">debugger</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Systematic 6-step root cause analysis. Teaches structured debugging thinking with AI assistance.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">decision-helper</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Decision frameworks: SWOT analysis, decision matrices, ICE scoring. Structured thinking for technical choices.</div>
+        </div>
+      </div>
+
+      <div class="skills-layer-col reveal reveal-delay-1">
+        <div class="skills-layer-header">
+          <div class="teaching-layer-tag teaching-layer-tag-2">Layer 2</div>
+          <div class="skills-layer-title">Project</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">setup-ai-context</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Questionnaire-driven generation of AGENTS.md, CLAUDE.md, and domain knowledge files for any project.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">ai-readiness</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Audits a project for AI tooling coverage. Scores AI-friendliness (hooks, linting, tests, context files), provides fixes.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">git-commit</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Conventional commits from diff. Consistent format, scoped messages, standardized across all teams.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">pr-description</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Auto-generate PR title and body from branch diff. Follows team conventions and templates.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">code-reviewer</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Reviews code for security vulnerabilities, performance issues, and correctness. Catches what linting misses.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">technical-writer</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Generates API docs, READMEs, and architecture documentation. Keeps project docs in sync with code.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">doc-updater</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Keeps docs/ files current as codebase evolves. Detects drift between code and documentation.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">security-best-practices</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Web security patterns. OWASP checks, dependency audits, vulnerability scanning, fix recommendations.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">rex-domain-knowledge</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Domain skill for REX. What AI agents need to understand about us: glossary, projects, architecture, conventions.</div>
+        </div>
+      </div>
+
+      <div class="skills-layer-col reveal reveal-delay-2">
+        <div class="skills-layer-header">
+          <div class="teaching-layer-tag teaching-layer-tag-3">Layer 3</div>
+          <div class="skills-layer-title">Workflow</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">code-review-setup</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Set up AI review guidelines, review skills, and domain-aware review for a project's review process.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">dev-workflow-guide</span>
+            <span class="skill-badge skill-badge-core">Core</span>
+          </div>
+          <div class="skill-entry-desc">Interactive guide through the Input-to-Ship lifecycle. Teaches Ways of Working with AI at each stage.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">project-planner</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Work breakdown structures, dependencies, milestones, and estimation. Structured project planning with AI.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">documentation-and-adrs</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Architecture Decision Records. Captures why decisions were made, not just what. Institutional knowledge.</div>
+        </div>
+        <div class="skill-entry">
+          <div class="skill-entry-header">
+            <span class="skill-entry-name">self-improving-skills</span>
+            <span class="skill-badge skill-badge-extended">Extended</span>
+          </div>
+          <div class="skill-entry-desc">Meta-skill that reviews and improves existing SKILL.md files. Teams iterate on their own skills over time.</div>
+        </div>
+      </div>
+
+      <div class="skill-creation-banner reveal">
+        <div class="skill-creation-banner-title">Creating Skills is Simple</div>
+        <div class="skill-creation-banner-desc">Use the skill-creator, follow the AgentSkills 2 specification, and build with frontier models (Claude, GPT) for the highest quality output. The process is lightweight: discuss the need, define the scope, then generate.</div>
+        <div class="skill-creation-steps">
+          <span class="skill-creation-step">1. Discuss and decide</span>
+          <span class="skill-creation-step">2. Use skill-creator</span>
+          <span class="skill-creation-step">3. Follow AgentSkills 2 spec</span>
+          <span class="skill-creation-step">4. Build with frontier models</span>
+          <span class="skill-creation-step">5. Test, iterate, share</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: AI ECOSYSTEM -->
+  <section id="ecosystem">
+    <div class="section-number reveal">04</div>
+    <h2 class="section-title reveal">The AI Ecosystem</h2>
+    <p class="section-subtitle reveal">Four layers of the AI stack. Your configuration shapes how interfaces use models that run on infrastructure. Know what each does and how they connect.</p>
+
+    <div class="reveal reveal-delay-1" style="margin-bottom: var(--space-xl);">
+      <svg viewBox="0 0 800 530" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 900px; height: auto; font-family: 'Archivo', system-ui, sans-serif;">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+            <path d="M0 0 L10 4 L0 8 z" fill="oklch(0.55 0.006 55)"/>
+          </marker>
+          <marker id="arr-green" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+            <path d="M0 0 L10 4 L0 8 z" fill="oklch(0.50 0.13 158)"/>
+          </marker>
+        </defs>
+
+        <!-- DEVELOPER BOX -->
+        <rect x="200" y="8" width="400" height="52" rx="10" fill="oklch(0.38 0.10 158)"/>
+        <text x="400" y="32" text-anchor="middle" fill="oklch(0.97 0.01 158)" font-weight="800" font-size="15" letter-spacing="0.08em">DEVELOPER</text>
+        <text x="400" y="48" text-anchor="middle" fill="oklch(0.97 0.01 158)" font-size="10" opacity="0.6" font-weight="500">You configure and use</text>
+
+        <!-- Arrow: Developer to Config -->
+        <path d="M300 60 L195 120" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="4 3"/>
+        <!-- Label: CONFIGURES (offset left of arrow) -->
+        <rect x="185" y="76" width="72" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
+        <text x="221" y="87" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">CONFIGURES</text>
+
+        <!-- Arrow: Developer to Interfaces -->
+        <path d="M500 60 L605 120" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="4 3"/>
+        <!-- Label: USES (offset right of arrow) -->
+        <rect x="560" y="76" width="38" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
+        <text x="579" y="87" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">USES</text>
+
+        <!-- CONFIGURATION BOX -->
+        <rect x="40" y="125" width="330" height="160" rx="10" fill="oklch(0.92 0.035 158)"/>
+        <text x="205" y="153" text-anchor="middle" fill="oklch(0.28 0.08 158)" font-weight="800" font-size="14">Configuration</text>
+        <text x="205" y="170" text-anchor="middle" fill="oklch(0.38 0.10 158)" font-size="10" font-weight="500" opacity="0.7">Shapes AI behavior per project</text>
+        <text x="70" y="196" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">AGENTS.md / CLAUDE.md</text>
+        <text x="70" y="216" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">Skills &amp; MCP Servers</text>
+        <text x="70" y="236" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">Rules &amp; Hooks</text>
+        <text x="70" y="256" fill="oklch(0.35 0.09 158)" font-size="11" font-weight="600">Domain Knowledge</text>
+
+        <!-- INTERFACES BOX -->
+        <rect x="430" y="125" width="330" height="160" rx="10" fill="oklch(0.95 0.035 70)"/>
+        <text x="595" y="153" text-anchor="middle" fill="oklch(0.42 0.12 70)" font-weight="800" font-size="14">Interfaces</text>
+        <text x="595" y="170" text-anchor="middle" fill="oklch(0.52 0.13 70)" font-size="10" font-weight="500" opacity="0.7">How developers interact with AI</text>
+        <text x="460" y="196" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">Claude Code (CLI)</text>
+        <text x="460" y="216" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">GitHub Copilot (IDE)</text>
+        <text x="460" y="236" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">Web Chat (Claude.ai, ChatGPT)</text>
+        <text x="460" y="256" fill="oklch(0.45 0.11 70)" font-size="11" font-weight="600">CLI Tools (OpenCode, Aider)</text>
+
+        <!-- Arrow: Config shapes Interfaces (horizontal between boxes) -->
+        <line x1="370" y1="205" x2="428" y2="205" stroke="oklch(0.50 0.13 158)" stroke-width="2" marker-end="url(#arr-green)"/>
+        <rect x="377" y="193" width="48" height="14" rx="4" fill="oklch(0.96 0.015 158)"/>
+        <text x="401" y="203" text-anchor="middle" fill="oklch(0.38 0.10 158)" font-size="8" font-weight="700" letter-spacing="0.05em">SHAPES</text>
+
+        <!-- Arrow: Config down to Models -->
+        <path d="M205 285 L340 355" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <!-- Label: INSTRUCTS (offset to left of arrow) -->
+        <rect x="215" y="310" width="68" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
+        <text x="249" y="321" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">INSTRUCTS</text>
+
+        <!-- Arrow: Interfaces down to Models -->
+        <path d="M595 285 L460 355" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <!-- Label: CALLS (offset to right of arrow) -->
+        <rect x="525" y="310" width="42" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
+        <text x="546" y="321" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">CALLS</text>
+
+        <!-- MODELS BOX -->
+        <rect x="175" y="355" width="450" height="75" rx="10" fill="oklch(0.94 0.005 260)"/>
+        <text x="400" y="382" text-anchor="middle" fill="oklch(0.32 0.03 260)" font-weight="800" font-size="14">Models</text>
+        <text x="400" y="402" text-anchor="middle" fill="oklch(0.40 0.02 260)" font-size="11" font-weight="500">Claude (Anthropic)  ·  GPT (OpenAI)  ·  Gemini (Google)</text>
+        <text x="400" y="418" text-anchor="middle" fill="oklch(0.55 0.01 260)" font-size="9" font-weight="400">Reasoning depth · Context window · Speed · Cost</text>
+
+        <!-- Arrow: Models down to Infrastructure -->
+        <path d="M400 430 L400 458" stroke="oklch(0.62 0.006 55)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+        <!-- Label: HOSTED ON -->
+        <rect x="413" y="437" width="62" height="15" rx="4" fill="oklch(0.985 0.005 85)"/>
+        <text x="444" y="448" text-anchor="middle" fill="oklch(0.50 0.008 55)" font-size="8" font-weight="700" letter-spacing="0.05em">HOSTED ON</text>
+
+        <!-- INFRASTRUCTURE BOX -->
+        <rect x="100" y="462" width="600" height="58" rx="10" fill="oklch(0.93 0.03 290)"/>
+        <text x="400" y="487" text-anchor="middle" fill="oklch(0.30 0.07 290)" font-weight="800" font-size="14">Infrastructure</text>
+        <text x="400" y="506" text-anchor="middle" fill="oklch(0.40 0.06 290)" font-size="11" font-weight="500">Azure OpenAI  ·  Azure Foundry  ·  Access &amp; Auth</text>
+      </svg>
+    </div>
+
+    <div class="tools-grid reveal reveal-delay-1">
+      <div class="tool-col">
+        <div class="tool-col-header">Models</div>
+        <div class="tool-col-type">The intelligence layer</div>
+        <div class="tool-best-for">Choose by task</div>
+        <ul class="tool-examples">
+          <li><span class="tool-item-name">Claude (Anthropic)</span><span class="tool-item-desc">Deep reasoning, code generation, long context (200K). Best for complex tasks, planning, review.</span></li>
+          <li><span class="tool-item-name">GPT (OpenAI)</span><span class="tool-item-desc">General purpose, broad knowledge. Good for quick answers, content generation, translation.</span></li>
+          <li><span class="tool-item-name">Gemini (Google)</span><span class="tool-item-desc">Multimodal, massive context (1M+). Strong for document analysis, image understanding.</span></li>
+          <li><span class="tool-item-name">Model selection matters</span><span class="tool-item-desc">Context window, reasoning depth, speed, and cost all factor into which model fits which task.</span></li>
+        </ul>
+      </div>
+      <div class="tool-col">
+        <div class="tool-col-header">Interfaces</div>
+        <div class="tool-col-type">How developers interact</div>
+        <div class="tool-best-for">Tools at hand</div>
+        <ul class="tool-examples">
+          <li><span class="tool-item-name">Claude Code (CLI)</span><span class="tool-item-desc">Terminal-first agent. Reads your codebase, runs commands, writes code. Full project context.</span></li>
+          <li><span class="tool-item-name">GitHub Copilot (IDE)</span><span class="tool-item-desc">Inline suggestions and chat in VS Code. Autocomplete, explain, fix. Fastest feedback loop.</span></li>
+          <li><span class="tool-item-name">Web Chat</span><span class="tool-item-desc">Claude.ai, ChatGPT, Gemini. Quick questions, brainstorming, exploration before coding.</span></li>
+          <li><span class="tool-item-name">CLI Tools</span><span class="tool-item-desc">OpenCode, Aider, and other terminal tools. Different strengths for different workflows.</span></li>
+        </ul>
+      </div>
+      <div class="tool-col">
+        <div class="tool-col-header">Configuration</div>
+        <div class="tool-col-type">Shaping AI behavior</div>
+        <div class="tool-best-for">Per-project setup</div>
+        <ul class="tool-examples">
+          <li><span class="tool-item-name">AGENTS.md / CLAUDE.md</span><span class="tool-item-desc">Project-level instructions. Code style, architecture decisions, domain context. AI reads these every session.</span></li>
+          <li><span class="tool-item-name">Skills</span><span class="tool-item-desc">Reusable, shareable AI workflows. Audits, setup wizards, review processes. Install and invoke.</span></li>
+          <li><span class="tool-item-name">Rules and Hooks</span><span class="tool-item-desc">Automated enforcement. Pre-commit linting, commit message validation, code formatting on save.</span></li>
+          <li><span class="tool-item-name">MCP Servers</span><span class="tool-item-desc">Bridge AI to external services. Databases, APIs, CI/CD, documentation. Extend what AI can reach.</span></li>
+          <li><span class="tool-item-name">Domain Knowledge</span><span class="tool-item-desc">Teaching AI your domain. Business logic, system architecture, team conventions, API contracts.</span></li>
+        </ul>
+      </div>
+      <div class="tool-col">
+        <div class="tool-col-header">Infrastructure</div>
+        <div class="tool-col-type">What powers it</div>
+        <div class="tool-best-for">Platform layer</div>
+        <ul class="tool-examples">
+          <li><span class="tool-item-name">Azure OpenAI</span><span class="tool-item-desc">Enterprise GPT access with data residency, compliance, and rate limits you control.</span></li>
+          <li><span class="tool-item-name">Azure Foundry</span><span class="tool-item-desc">Hosts and routes models (OpenAI, Claude, Copilot models). Connects interfaces to approved models.</span></li>
+          <li><span class="tool-item-name">Access and Auth</span><span class="tool-item-desc">API keys, SSO, model permissions. Who can use what, and how usage is tracked.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: TEACHING STRATEGY -->
+  <section id="teaching">
+    <div class="section-number reveal">05</div>
+    <h2 class="section-title reveal">Teaching Strategy</h2>
+    <p class="section-subtitle reveal">One deep talk that maps the full picture. Twelve lightning talks carved from it, organized by layer. Present everywhere, teach by doing.</p>
+
+    <div class="teaching-layers-grid">
+      <div class="teaching-deep reveal" style="grid-column: 1 / -1;">
+        <div class="teaching-deep-kicker">Flagship Deep Talk</div>
+        <div class="teaching-deep-title">AI-Native Development: From Individual to Team to Organization</div>
+        <div class="teaching-deep-desc">The complete strategy. Covers all three layers, the development lifecycle, the AI ecosystem, and the practical steps to make any team AI-native. Every lightning talk below is carved from this.</div>
+      </div>
+
+      <div class="teaching-layer-col reveal">
+        <div class="teaching-layer-tag teaching-layer-tag-1">Layer 1: Individual</div>
+        <div class="teaching-block-title">Developer Enablement</div>
+        <ul class="lightning-list">
+          <li><span class="lightning-number">01</span> Setting up your AI development environment</li>
+          <li><span class="lightning-number">02</span> Understanding LLM models: Claude vs GPT vs Gemini</li>
+          <li><span class="lightning-number">03</span> Context engineering: how to communicate with AI</li>
+          <li><span class="lightning-number">04</span> Your first week with Claude Code and GitHub Copilot</li>
+        </ul>
+      </div>
+
+      <div class="teaching-layer-col reveal reveal-delay-1">
+        <div class="teaching-layer-tag teaching-layer-tag-2">Layer 2: Project</div>
+        <div class="teaching-block-title">Codebase Readiness</div>
+        <ul class="lightning-list">
+          <li><span class="lightning-number">05</span> Making your codebase AI-friendly in 30 minutes</li>
+          <li><span class="lightning-number">06</span> Writing AGENTS.md and CLAUDE.md that actually work</li>
+          <li><span class="lightning-number">07</span> Pre-commit hooks, linting, and code quality for AI</li>
+          <li><span class="lightning-number">08</span> From legacy codebase to AI-ready: a practical guide</li>
+        </ul>
+      </div>
+
+      <div class="teaching-layer-col reveal reveal-delay-2">
+        <div class="teaching-layer-tag teaching-layer-tag-3">Layer 3: Workflow</div>
+        <div class="teaching-block-title">Team Practices</div>
+        <ul class="lightning-list">
+          <li><span class="lightning-number">09</span> The development lifecycle with AI in the loop</li>
+          <li><span class="lightning-number">10</span> AI code review: setup, results, and pitfalls</li>
+          <li><span class="lightning-number">11</span> How we migrated SLS to CDK using AI and skills</li>
+          <li><span class="lightning-number">12</span> Building and sharing skills across REX teams</li>
+        </ul>
+      </div>
+
+      <div class="teaching-venues-row">
+        <div class="teaching-block reveal">
+          <div class="teaching-block-title">Venues</div>
+          <div class="venue-tags">
+            <span class="venue-tag">BoMi Talks</span>
+            <span class="venue-tag">AI DevCraft</span>
+            <span class="venue-tag secondary">Team Sessions</span>
+            <span class="venue-tag secondary">KP Demos</span>
+          </div>
+        </div>
+        <div class="teaching-block reveal reveal-delay-1">
+          <div class="teaching-block-title">Formats</div>
+          <div class="venue-tags">
+            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Live workshops</span>
+            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Video recordings</span>
+            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Handbooks</span>
+            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Tutorials</span>
+            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Templates</span>
+            <span class="venue-tag" style="background: var(--slate-100); color: var(--slate-700);">Boilerplates</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    REX AI Enablement Strategy. Last updated May 2026.
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+
+</body>
+</html>

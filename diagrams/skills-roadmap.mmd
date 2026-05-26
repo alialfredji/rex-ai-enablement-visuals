@@ -1,0 +1,35 @@
+---
+title: Skills Roadmap
+---
+graph LR
+    subgraph W1["Wave 1: Foundation"]
+        ACS[ai-context-setup<br/>Generate AGENTS.md, CLAUDE.md]
+        CAA[codebase-ai-audit<br/>Score AI-friendliness]
+        PRD[pr-description<br/>Generate PR descriptions]
+        CC[conventional-commit<br/>Standardize commits]
+    end
+
+    subgraph W2["Wave 2: Workflow & Review"]
+        CRS[code-review-setup<br/>AI review guidelines]
+        DWG[dev-workflow-guide<br/>Input→Ship lifecycle]
+        RDK[rex-domain-knowledge<br/>KP RMS context]
+        SFR[skill-for-rex<br/>Create team skills]
+    end
+
+    ACS -->|enables| CRS
+    CAA -->|enables| DWG
+    PRD -->|enables| RDK
+    CC -->|enables| SFR
+
+    style W1 fill:#e8f5ec,stroke:#3a8c5e
+    style W2 fill:#fef3e0,stroke:#b8860b
+
+    style ACS fill:#3a8c5e,color:#fff,stroke:#2d6b48
+    style CAA fill:#3a8c5e,color:#fff,stroke:#2d6b48
+    style PRD fill:#3a8c5e,color:#fff,stroke:#2d6b48
+    style CC fill:#3a8c5e,color:#fff,stroke:#2d6b48
+
+    style CRS fill:#d4a017,color:#fff,stroke:#b8860b
+    style DWG fill:#d4a017,color:#fff,stroke:#b8860b
+    style RDK fill:#d4a017,color:#fff,stroke:#b8860b
+    style SFR fill:#d4a017,color:#fff,stroke:#b8860b

@@ -1,0 +1,45 @@
+---
+title: Development Lifecycle with AI
+---
+graph LR
+    I[Input<br/>Gather context] --> CL[Clarity<br/>Define scope]
+    CL --> PL[Plan<br/>Strategy]
+    PL --> EX[Execute<br/>Build code]
+    EX --> CI[CI Review<br/>Automated checks]
+    CI --> AI[AI Review<br/>Claude review]
+    AI --> HR[Human Review<br/>Team approval]
+    HR --> SH[Ship<br/>Deploy]
+
+    subgraph Prepare
+        I
+        CL
+        PL
+    end
+
+    subgraph Build
+        EX
+    end
+
+    subgraph Validate
+        CI
+        AI
+        HR
+    end
+
+    subgraph Ship
+        SH
+    end
+
+    style Prepare fill:#e8f5ec,stroke:#3a8c5e
+    style Build fill:#fef3e0,stroke:#b8860b
+    style Validate fill:#eef0f4,stroke:#5a6577
+    style Ship fill:#fde8e0,stroke:#c65430
+
+    style I fill:#3a8c5e,color:#fff,stroke:#2d6b48
+    style CL fill:#3a8c5e,color:#fff,stroke:#2d6b48
+    style PL fill:#3a8c5e,color:#fff,stroke:#2d6b48
+    style EX fill:#d4a017,color:#fff,stroke:#b8860b
+    style CI fill:#5a6577,color:#fff,stroke:#434d5c
+    style AI fill:#5a6577,color:#fff,stroke:#434d5c
+    style HR fill:#5a6577,color:#fff,stroke:#434d5c
+    style SH fill:#c65430,color:#fff,stroke:#a3421f

@@ -1,0 +1,34 @@
+---
+title: The Three Layers of AI Enablement
+---
+graph BT
+    subgraph L1["Layer 1: Individual Developer"]
+        direction LR
+        E[Environment Setup]
+        P[Prompting & Context Engineering]
+        S[Skills Ecosystem]
+        T[Tools Landscape]
+    end
+
+    subgraph L2["Layer 2: Project / Codebase"]
+        direction LR
+        AC[AI Context Files<br/>AGENTS.md, CLAUDE.md]
+        CQ[Code Quality<br/>Hooks, Linting, Prettier]
+        TE[Testing & TDD]
+        SE[Security<br/>npm audits, deps]
+    end
+
+    subgraph L3["Layer 3: Team Workflow"]
+        direction LR
+        PR[PR Workflow<br/>AI descriptions, templates]
+        CR[Code Review<br/>AI + human review]
+        AU[Automation<br/>CI + AI pipeline]
+        WW[Ways of Working<br/>Dev lifecycle]
+    end
+
+    L1 -->|builds on| L2
+    L2 -->|builds on| L3
+
+    style L1 fill:#f0faf3,stroke:#3a8c5e
+    style L2 fill:#d4eddb,stroke:#3a8c5e
+    style L3 fill:#3a8c5e,stroke:#2d6b48,color:#fff
